@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<style type="text/css">
+#aadd {
+	position: absolute;
+	left: 0;
+}
+</style>
+</head>
+
+<body>
+	<h2>Hello World!</h2>
+	<div class="container">
+		<div>
+			<a class="btn btn-primary" href="/sql_jfinal/hello/add">add</a>
+		</div>
+		<div class="row">
+
+			<div class="col-md-8">
+				<table class="table table-striped">
+					#include("common/_from.html")
+					<tbody>
+						#for(x : bg.getList())
+						<tr>
+							<td>#(x.id)</td>
+							<td>#(x.title)</td>
+							<td>#(x.content)</td>
+							<td><a href="/sql_jfinal/hello/delete?did=#(x.id)">删除</a><a
+								href="/sql_jfinal/hello/edit/#(x.id)">修改</a></td>
+						</tr>
+						#end
+					</tbody>
+				</table>
+				#@paginate((bg.pageNumber),(bg.totalPage),3)
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

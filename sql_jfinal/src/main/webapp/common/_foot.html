@@ -1,0 +1,24 @@
+#define paginate(currentPage,totalPage,link) currentPage, totalPage,
+link
+<div>
+	<a id="pre" href="#" onclick="preNumber()">上一页</a>
+	#(currentPage)/#(totalPage) <a id="nex" onclick="nextNumber()" href="#">下一页</a>
+</div>
+<script type="application/javascript">
+	
+		var pre = document.getElementById("pre");
+		var nex = document.getElementById("nex")
+		var pm = #(bg.pageNumber)
+		function preNumber() {
+			pm < 2 ? 1 : --pm;
+			pre.href = "/sql_jfinal/hello/page?pageNumber=" + pm;
+		}
+		
+		function nextNumber() {
+			pm+1>#(totalPage)?#(totalPage):++pm;
+			nex.href = "/sql_jfinal/hello/page?pageNumber=" + pm;
+		}
+	
+</script>
+
+#end

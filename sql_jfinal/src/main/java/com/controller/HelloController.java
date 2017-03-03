@@ -22,7 +22,7 @@ public class HelloController extends Controller {
 	}
 
 	/**
-	 * 翻页功能的实现
+	 * 缈婚〉鍔熻兘鐨勫疄鐜�
 	 */
 	public void page() {
 
@@ -43,39 +43,43 @@ public class HelloController extends Controller {
 		renderTemplate("index.html");
 	}
 
-	/**
-	 * 通过id删除
-	 */
 	public void delete() {
 		int id = getParaToInt("did");
 		Blog.blog.dao().deleteById(id);
 		page();
 	}
 
-	/**
-	 * 添加数据
-	 */
 	public void add() {
-		renderTemplate("add.html");
+		renderTemplate("meger.html");
 	}
 
 	public void doadd() {
-		Blog b = getModel(Blog.class, "b");
-		b.save();
+
+		if (getParaToInt() == null) {
+			Blog b = getModel(Blog.class, "b");
+			b.save();
+			page();
+		} else {
+			System.out.println("updata");
+			getModel(Blog.class, "b").update();
+			page();
+		}
+
+	}
+
+	public void edit1() {
+		setAttr("b", Blog.blog.dao().findById(getPara("up")));
+		renderTemplate("meger.html");
+	}
+
+	public void updata1() {
+		getModel(Blog.class, "b").update();
 		page();
 	}
 
-	// 页面的修改
-	public void edit() {
-		setAttr("b", Blog.blog.dao().findById(getParaToInt()));
-		id = getParaToInt();
-		renderTemplate("edit.html");
-	}
-
-	// 页面的更新
-	@Before(BlogValidator.class)
+	// 更新数据
 	public void updata() {
-		getModel(Blog.class,"b").update();
+		getModel(Blog.class, "b").update();
 		page();
 	}
 

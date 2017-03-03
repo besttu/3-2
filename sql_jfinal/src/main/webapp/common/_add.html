@@ -1,13 +1,15 @@
-#define addfrom(ul)
+#define addfrom(ul,number) #if(number==1)
+<h3>add</h3>
+#end #if(number==0)
+<h3>edit</h3>
+#end
 <form action="/sql_jfinal/hello/#(ul)" method="post">
-	<p>#(titleMsg)
-	<p>#(contentMsg) name:
+	<input type="hidden" name="b.id" value="#(b.id??)" />
+	<p>#(titleMsg??"")
+	<p>#(contentMsg??"") name: 
 	<p>
-
-	
 		<input type="text" name="b.title" value="#(b.title??)" />
 	</p>
-	
 	pwd:
 	<p>
 		<textarea rows=" 10 " name="b.content" cols="100 ">#(b.content??)</textarea>

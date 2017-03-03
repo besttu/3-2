@@ -26,6 +26,8 @@ public class DemoConfig extends JFinalConfig {
 		PropKit.use("system_info.txt");
 		// 设置开发模式
 		me.setDevMode(PropKit.getBoolean("devMode", false));
+		// 设置编码
+		me.setEncoding("utf-8");
 	}
 
 	@Override

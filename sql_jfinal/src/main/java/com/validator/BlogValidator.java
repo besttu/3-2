@@ -10,16 +10,19 @@ public class BlogValidator extends Validator {
 	protected void handleError(Controller controller) {
 		// TODO Auto-generated method stub
 		// controller.keepModel(Blog.class);
+		String actionKey = getActionKey();
 		controller.keepModel(Blog.class, "b");
-		controller.render("edit.html");
+		if (actionKey.equals("/hello/doadd"))
+			controller.render("add.html");
+		else if (actionKey.equals("/hello/updata"))
+			controller.render("edit.html");
 	}
 
 	@Override
 	protected void validate(Controller controller) {
 		// TODO Auto-generated method stub
-		validateRequired("b.title", "titleMsg", "è¯·è¾“å…¥Blogæ ‡é¢˜!");
+		validateRequired("b.title", "titleMsg", "ÇëÊäÈëBlog±êÌâ¢˜!");
 		validateRequired("b.content", "contentMsg", "è¯·è¾“å…¥contentMsg!");
-		System.out.println(getActionKey());
 	}
 
 }
